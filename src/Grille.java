@@ -1,4 +1,4 @@
-//ceci est un test
+// TODO écrire le commentaire
 public class Grille
 {
 	
