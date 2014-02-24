@@ -4,30 +4,28 @@ public class Memory
 	// TODO écrire le commentaire de manière plus concise et à la fois plus
 	// précise
 	/**
-	 * grille est un ensemble de paires de cartes face cacher disposer
-	 * alléatoirement. Chaque paire de carte a un dessins différents
+	 * ensemble de paires de cartes disposé face caché alléatoirement devant les joueur. 
 	 */
 	private Grille grille;
 
 	// TODO écrire le commentaire de manière plus concise et à la fois plus
 	// précise
 	/**
-	 * joueur1 est le premier joueur a désigner deux cartes si les deux cartes
-	 * ont le même dessins, le joueur1 peut recomencer, sinon il s'arrete
+	 * Premier joueur
 	 */
 	private Joueur joueur1;
 
 	// TODO écrire le commentaire de manière plus concise et à la fois plus
 	// précise
 	/**
-	 * joueur2 peut désigner deux cartes après que le joueur1 se soit arreter
+	 * 2ème joueur
 	 */
 	private Joueur joueur2;
 
 	// TODO écrire le commentaire de manière plus précise
-	/**
-	 * une partie de memory est composé d'une grille et est jouer par deux
-	 * joueurs
+	/** Initialisation:
+	 * Les joueurs sont présent pour débuter la partie
+	 * la grille où sont disposés les cartes est initialiser (les cartes sont face caché)
 	 */
 	public Memory()
 	{
@@ -38,7 +36,7 @@ public class Memory
 
 	// TODO écrire le commentaire de manière plus précise
 	/**
-	 * méthode pour jouer au Memory
+	 * demare le jeu memory et se termine lors qu'il n'y a plus de carte face caché
 	 */
 	public void jouer()
 	{
