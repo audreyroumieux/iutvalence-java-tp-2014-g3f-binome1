@@ -8,54 +8,69 @@
  */
 public class Grille
 {
-	public final int NombrePaireDeCartes = n ;
+	public static final int NOMBRE_DE_LIGNES_PAR_DEFAUT = 3;
+	public static final int NOMBRE_DE_COLONNES_PAR_DEFAUT = 4;
+	public static final int NOMBRE_DE_PAIRE_DE_CARTES = 6;
+
+	private final int nombreDeLignes;
+	private final int nombreDeColonnes;
+	private final int nombrePaireDeCarte;
+	
+	private final int nombreDeCartePosee =0;
+	
+	private Carte[][] grilleDeCartes;
 	
 	/**
 	 * crée un jeu de 6 paires de cartes par defaux
 	 */
 	public Grille()
 	{
-		final int NombreDeLigneGrille=3;
-		final int NombreDeColloneGrille=3;
+		this.nombreDeLignes = NOMBRE_DE_LIGNES_PAR_DEFAUT;
+		this.nombreDeColonnes = NOMBRE_DE_COLONNES_PAR_DEFAUT;
+		this.nombrePaireDeCarte = NOMBRE_DE_PAIRE_DE_CARTES;
 		
-		this.Grille = new Carte [NombreDeColloneGrille][NombreDeLigneGrille];
+		this.grilleDeCartes = new Carte [this.nombreDeLignes][this.nombreDeColonnes];
 		
-		for(int ValeurAxeY=0; ValeurAxeY<NombreDeLigneGrille; ValeurAxeY++)
+		this.creerCartes();
+			for(int nombreDeLigne=0; nombreDeLigne < NOMBRE_DE_LIGNES_PAR_DEFAUT; nombreDeLigne++)
 		{ 
-			for(int ValeurAxeX=0; ValeurAxeX<NombreDeColloneGrille; ValeurAxeX++)
+			for(int nombreDeColonne=0; nombreDeColonne <NOMBRE_DE_COLONNES_PAR_DEFAUT; nombreDeColonne++)
 			{
-				this.
+				if ( nombrePaireDeCarte)
+				{
+					this.Carte[nombreDeLigne][nombreDeColonne] = new Carte();
+					nombreDeCartePosee = nombreDeCartePosee + 1;
+				}
 			}
-		}
-		
+		}					
+		this.melangerCartes();
+	
+
 	}
+	
 	
 	/**
 	 * crée un jeux de cartes en fonction du nombre de paire de cartes demandé
 	 * @return
 	 */
-	public Grille(int NombrePaireDeCartes)
+	public Grille (int nombreDeLignes, int nombreDeColonnes)
 	{
 		
-		final int NombreDeColloneGrille=?;
-		final int NombreDeLigneGrille=?;
+		this.grilleDeCartes = new Carte [this.nombreDeLignes][this.nombreDeColonnes];
 		
-		this.Grille = new Carte [NombreDeLigneGrille][NombreDeColloneGrille];
-
-		for(int ValeurAxeY=0; ValeurAxeY<NombreDeLigneGrille; ValeurAxeY++)
+		for(int nombreDeLigne=0; nombreDeLigne < NOMBRE_DE_LIGNES_PAR_DEFAUT; nombreDeLigne++)
 		{ 
-			for(int ValeurAxeX=0; ValeurAxeX<NombreDeColloneGrille; ValeurAxeX++)
+			for(int nombreDeColonne=0; nombreDeColonne <NOMBRE_DE_COLONNES_PAR_DEFAUT; nombreDeColonne++)
 			{
-				
 			}
 		}
 	}
 	/**
-	 * récupaire le nombre n de paire de cartes
+	 * récupaire le nombre de lignes et de collones de cartes maximal pour se rapprocher d'une disposition des cartes en forme de carré
 	 * @return
 	 */
-	public int getNombrePaireDeCartes()
+	public int getNombreLigneEtColonneDeCartes()
 	{
-		return this.n ;
+		return ("il y a",this.nombreDeLignes, "de ligne et il y a", this.nombreDeColonnes , "colonnes");
 	}
 }

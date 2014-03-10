@@ -1,8 +1,11 @@
 // TODO écrire le commentaire
 /**
- * représente un joueur.
+ * représente un joueur
  */
 public class Joueur
 {
-
+	public RetournerCartes()
+	{
+		
+	}
 }

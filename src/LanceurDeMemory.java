@@ -1,6 +1,6 @@
 // TODO écrire le commentaire
 /**
- * lance une partie de jeu Memory.
+ * lance une partie de jeu Memory
  * @author roumieau
  *
  */
