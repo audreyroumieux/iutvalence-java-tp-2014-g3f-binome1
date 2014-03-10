@@ -24,7 +24,7 @@ public class Grille
 		{ 
 			for(int ValeurAxeX=0; ValeurAxeX<NombreDeColloneGrille; ValeurAxeX++)
 			{
-				this
+				this.
 			}
 		}
 		

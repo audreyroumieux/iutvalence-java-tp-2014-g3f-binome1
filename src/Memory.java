@@ -4,7 +4,7 @@ public class Memory
 	// TODO écrire le commentaire de manière plus concise et à la fois plus
 	// précise
 	/**
-	 * ensemble de paires de cartes disposé face caché alléatoirement devant les joueur. 
+	 * ensemble de paires de cartes disposé face caché alléatoirement devant les joueur 
 	 */
 	private Grille grille;
 
