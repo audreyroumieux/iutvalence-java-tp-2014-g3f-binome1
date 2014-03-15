@@ -1,4 +1,3 @@
-// TODO écrire le commentaire
 /**
  * représente un joueur
  */
