@@ -21,11 +21,16 @@ public class Memory
 	 * Les joueurs sont présent pour débuter la partie
 	 * la grille où sont disposés les cartes est initialiser (les cartes sont face caché)
 	 */
-	public Memory()
+	public Memory(int lignes, int colonnes)
 	{
-		this.grille = new Grille();
+		this.grille = new Grille(lignes, colonnes);
 		this.joueur1 = new Joueur();
 		this.joueur2 = new Joueur();
 	}
 
+	public void jouer()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

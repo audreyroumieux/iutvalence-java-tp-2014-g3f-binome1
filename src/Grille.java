@@ -1,38 +1,44 @@
-// TODO écrire le commentaire
+import java.util.Random;
+import java.util.RandomAccess;
+
 /**
- * représente une grille composées de cartes face caché,
- * attendent une instruction d'un des joureurs pour retourner l'une des cartes
- * (Chaque paire de carte a un dessins différents)
+ * représente une grille composées de cartes face caché, attendent une
+ * instruction d'un des joureurs pour retourner l'une des cartes (Chaque paire
+ * de carte a un dessins différents)
+ * 
  * @author roumieau
- *
+ * 
  */
 public class Grille
 {
-	// TODO écrire un commentaire
+	/**
+	 * constante du nombre de ligne par défaut
+	 */
 	public static final int NOMBRE_DE_LIGNES_PAR_DEFAUT = 3;
-
-	// TODO écrire un commentaire
+	/**
+	 * constante du nombre de colone par défaut
+	 */
 	public static final int NOMBRE_DE_COLONNES_PAR_DEFAUT = 4;
-	
-	// TODO écrire un commentaire
-	public static final int NOMBRE_DE_PAIRE_DE_CARTES = 6;
 
-	// TODO écrire un commentaire
+	/**
+	 * nombre de ligne de la grille
+	 */
 	private final int nombreDeLignes;
-	
-	// TODO écrire un commentaire
+	/**
+	 * nombre de colone de la grille
+	 */
 	private final int nombreDeColonnes;
-	
-	// TODO écrire un commentaire
-	private final int nombrePaireDeCarte;
-	
-	// TODO écrire un commentaire
-	// TODO initialiser l'attribut dans le constructeur
-	private final int nombreDeCartePosee =0;
-	
-	// TODO écrire un commentaire
+
+	/**
+	 * valeur de nombre de cartes posees sur la grille lors de sa création
+	 */
+	private int nombreDeCartesPosees;
+
+	/**
+	 * tableau représentent la grille
+	 */
 	private Carte[][] grilleDeCartes;
-	
+
 	/**
 	 * crée un jeu de 6 paires de cartes par defaut
 	 */
@@ -40,52 +46,72 @@ public class Grille
 	{
 		this.nombreDeLignes = NOMBRE_DE_LIGNES_PAR_DEFAUT;
 		this.nombreDeColonnes = NOMBRE_DE_COLONNES_PAR_DEFAUT;
-		this.nombrePaireDeCarte = NOMBRE_DE_PAIRE_DE_CARTES;
 		
-		this.grilleDeCartes = new Carte [this.nombreDeLignes][this.nombreDeColonnes];
-		
-		this.creerCartes();
-			for(int nombreDeLigne=0; nombreDeLigne < NOMBRE_DE_LIGNES_PAR_DEFAUT; nombreDeLigne++)
-		{ 
-			for(int nombreDeColonne=0; nombreDeColonne <NOMBRE_DE_COLONNES_PAR_DEFAUT; nombreDeColonne++)
-			{
-				if ( nombrePaireDeCarte)
-				{
-					this.Carte[nombreDeLigne][nombreDeColonne] = new Carte();
-					nombreDeCartePosee = nombreDeCartePosee + 1;
-				}
-			}
-		}					
-		this.melangerCartes();
-	
-
+		this.nombreDeCartesPosees = 0;
+		this.grilleDeCartes = new Carte[this.nombreDeLignes][this.nombreDeColonnes];
+		placerCartes();
+		melangerCartes();
 	}
-	
+
+
 	// TODO compléter le commentaire
 	/**
-	 * crée un jeux de cartes en fonction du nombre de paire de cartes demandé
+	 * crée une grille en fonction du nombre de lignes et de colones
 	 * @return
 	 */
-	public Grille (int nombreDeLignes, int nombreDeColonnes)
+	public Grille(int nombreDeLignes, int nombreDeColonnes)
 	{
+		this.nombreDeLignes = nombreDeLignes;
+		this.nombreDeColonnes = nombreDeColonnes;
 		
-		this.grilleDeCartes = new Carte [this.nombreDeLignes][this.nombreDeColonnes];
-		
-		for(int nombreDeLigne=0; nombreDeLigne < NOMBRE_DE_LIGNES_PAR_DEFAUT; nombreDeLigne++)
-		{ 
-			for(int nombreDeColonne=0; nombreDeColonne <NOMBRE_DE_COLONNES_PAR_DEFAUT; nombreDeColonne++)
+		this.nombreDeCartesPosees = 0;
+		this.grilleDeCartes = new Carte[this.nombreDeLignes][this.nombreDeColonnes];
+		placerCartes();
+		melangerCartes();
+	}
+	
+	/**
+	 * place une carte sur la grille qui lui corespond
+	 */
+	private void placerCartes()
+	{
+		for (int nombreDeLigne = 0; nombreDeLigne <this.nombreDeLignes; nombreDeLigne++)
+		{
+			for (int nombreDeColonne = 0; nombreDeColonne < nombreDeColonne; nombreDeColonne++)
 			{
+				this.grilleDeCartes[nombreDeLigne][nombreDeColonne] = new Carte(this.nombreDeCartesPosees / 2);
+				this.nombreDeCartesPosees = this.nombreDeCartesPosees + 1;
 			}
 		}
 	}
-	
 	/**
-	 * récupère le nombre de lignes et de collones de cartes maximal pour se rapprocher d'une disposition des cartes en forme de carré
-	 * @return
+	 * permutation N fois de deux carte pur melanger les cartes qui posé sur la grille
+	 * N correspond au nombre total de permutation
 	 */
-	// TODO attention : le type de retour n'est pas compatible avec ce qui est renvoyé
-	public int getNombreLigneEtColonneDeCartes()
+	private void melangerCartes()
 	{
-		return ("il y a",this.nombreDeLignes, "de ligne et il y a", this.nombreDeColonnes , "colonnes");
+		// TODO Auto-generated method stub
+
+		 int nombreDePermutationsAEffectuer = this.nombreDeLignes * this.nombreDeColonnes;
+		 int numeroDeLigneSource;
+		 int numeroDeColonneSource;
+		 int numeroDeLigneDestination;
+		 int numeroDeColonneDestination;
+
+		 Carte carteAEchanger;
+		 
+		for(int permutation = 0; permutation < nombreDePermutationsAEffectuer; permutation++ )
+		{
+			numeroDeLigneSource = 0 + (int)(Math.random()*this.nombreDeLignes);
+			numeroDeColonneSource =  0 + (int)(Math.random()*this.nombreDeColonnes);
+			numeroDeLigneDestination =  0 + (int) (Math.random()*this.nombreDeLignes);
+			numeroDeColonneDestination = 0 + (int) (Math.random()*this.nombreDeColonnes);
+			
+			carteAEchanger = this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource];
+			this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource] = this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination];
+			this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination] = carteAEchanger;
+		}
 	}
+
+	
 }

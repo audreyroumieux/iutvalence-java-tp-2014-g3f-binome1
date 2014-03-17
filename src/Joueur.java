@@ -3,9 +3,12 @@
  */
 public class Joueur
 {
-	// TODO écrire un commentaire
-	// TODO il manque le type de retour
-	public RetournerCartes()
+	/**
+	 * retourne la carte en fonction de son emplacement en ligne ou en colone
+	 * @param nombreDeLignes  sur la quel est la carte
+	 * @param nombreDeColonne sur la quel est la carte
+	 */
+	public RetournerCartes(int nombreDeLignes, int nombreDeColonne)
 	{
 		
 	}
