@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * représente un joueur
  */
@@ -8,7 +10,7 @@ public class Joueur
 	 * @param nombreDeLignes  sur la quel est la carte
 	 * @param nombreDeColonne sur la quel est la carte
 	 */
-	public RetournerCartes(int nombreDeLignes, int nombreDeColonne)
+	public jouer(int nombreDeLignes, int nombreDeColonne)
 	{
 		
 	}

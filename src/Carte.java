@@ -1,5 +1,4 @@
 // TODO déplacer les classe dans un paquetage
-
 /**
  * représente une carte
  * @author roumieau
@@ -20,6 +19,7 @@ public class Carte
 	{
 		this.numero = numero;
 	}
+	
 	/**
 	 * fonction pour obtenir le numero de la carte
 	 * @returnle numero de la carte
@@ -28,4 +28,12 @@ public class Carte
 	{
 		return this.numero;
 	}
+
+	
+		public String toString()
+		{
+			
+		}
+
+
 }

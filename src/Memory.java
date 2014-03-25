@@ -1,3 +1,5 @@
+import java.util.Random;
+
 // TODO déplacer la classe dans un paquetage
 // TODO écrire un commentaire
 public class Memory
@@ -31,6 +33,8 @@ public class Memory
 	public void jouer()
 	{
 		// TODO Auto-generated method stub
-		
-	}
+		System.out.println(this.grille);
+
+	} 
+	
 }

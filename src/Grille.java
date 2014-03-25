@@ -5,11 +5,10 @@ import java.util.RandomAccess;
  * représente une grille composées de cartes face caché, attendent une
  * instruction d'un des joureurs pour retourner l'une des cartes (Chaque paire
  * de carte a un dessins différents)
- * 
  * @author roumieau
  * 
  */
-public class Grille
+public class Grille 
 {
 	/**
 	 * constante du nombre de ligne par défaut
@@ -49,14 +48,13 @@ public class Grille
 		
 		this.nombreDeCartesPosees = 0;
 		this.grilleDeCartes = new Carte[this.nombreDeLignes][this.nombreDeColonnes];
-		placerCartes();
-		melangerCartes();
+		
+		this.placerCartes();
+		this.melangerCartes();
 	}
 
-
-	// TODO compléter le commentaire
 	/**
-	 * crée une grille en fonction du nombre de lignes et de colones
+	 * crée une grille en fonction du nombre de lignes et de colones choisi par le joueur
 	 * @return
 	 */
 	public Grille(int nombreDeLignes, int nombreDeColonnes)
@@ -75,23 +73,24 @@ public class Grille
 	 */
 	private void placerCartes()
 	{
-		for (int nombreDeLigne = 0; nombreDeLigne <this.nombreDeLignes; nombreDeLigne++)
+		for (int numeroDeLigne = 0; numeroDeLigne <this.nombreDeLignes; numeroDeLigne++)
 		{
-			for (int nombreDeColonne = 0; nombreDeColonne < nombreDeColonne; nombreDeColonne++)
+			for (int numeroDeColonne = 0; numeroDeColonne < this.nombreDeColonnes; numeroDeColonne++)
 			{
-				this.grilleDeCartes[nombreDeLigne][nombreDeColonne] = new Carte(this.nombreDeCartesPosees / 2);
+				this.grilleDeCartes[numeroDeLigne][numeroDeColonne] = new Carte(this.nombreDeCartesPosees / 2);
 				this.nombreDeCartesPosees = this.nombreDeCartesPosees + 1;
 			}
 		}
 	}
 	/**
-	 * permutation N fois de deux carte pur melanger les cartes qui posé sur la grille
+	 * permutation N fois de deux carte pour melanger les cartes qui sont posé sur la grille
 	 * N correspond au nombre total de permutation
 	 */
 	private void melangerCartes()
 	{
 		// TODO Auto-generated method stub
-
+		 Random generateurDeNombresAleatoires = new Random();
+		 
 		 int nombreDePermutationsAEffectuer = this.nombreDeLignes * this.nombreDeColonnes;
 		 int numeroDeLigneSource;
 		 int numeroDeColonneSource;
@@ -102,10 +101,13 @@ public class Grille
 		 
 		for(int permutation = 0; permutation < nombreDePermutationsAEffectuer; permutation++ )
 		{
-			numeroDeLigneSource = 0 + (int)(Math.random()*this.nombreDeLignes);
-			numeroDeColonneSource =  0 + (int)(Math.random()*this.nombreDeColonnes);
-			numeroDeLigneDestination =  0 + (int) (Math.random()*this.nombreDeLignes);
-			numeroDeColonneDestination = 0 + (int) (Math.random()*this.nombreDeColonnes);
+			/*
+			 * on fait un rendome (prend une valeur au hazard) entre 0 et le nob de ligne ou de colone (8) que l'on a
+			 */
+			numeroDeLigneSource = generateurDeNombresAleatoires.nextInt(this.nombreDeLignes);
+			numeroDeColonneSource = generateurDeNombresAleatoires.nextInt(this.nombreDeColonnes);
+			numeroDeLigneDestination = generateurDeNombresAleatoires.nextInt(this.nombreDeLignes);
+			numeroDeColonneDestination = generateurDeNombresAleatoires.nextInt(this.nombreDeColonnes);
 			
 			carteAEchanger = this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource];
 			this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource] = this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination];
@@ -113,5 +115,22 @@ public class Grille
 		}
 	}
 
-	
+	public String toString()
+	{
+		String MemoryAsciiArt = "------------------------------------------------\n";
+		for (int numeroDeLigne = 0; numeroDeLigne <nombreDeLignes; numeroDeLigne++)
+		{
+			for (int numeroDeColonne = 0; numeroDeColonne < nombreDeColonnes; numeroDeColonne++)
+			{
+				if (this.grilleDeCartes[numeroDeLigne][numeroDeColonne] != null)
+					MemoryAsciiArt += "x";
+				else
+					MemoryAsciiArt += "_";
+			}
+			MemoryAsciiArt +="\n";
+		}
+		 MemoryAsciiArt += "\n------------------------------------------------\n";
+		return MemoryAsciiArt;
+	}
+		
 }
