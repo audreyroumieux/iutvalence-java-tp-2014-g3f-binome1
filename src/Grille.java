@@ -66,6 +66,7 @@ public class Grille
 		this.grilleDeCartes = new Carte[this.nombreDeLignes][this.nombreDeColonnes];
 		placerCartes();
 		melangerCartes();
+
 	}
 	
 	/**
@@ -113,6 +114,42 @@ public class Grille
 			this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource] = this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination];
 			this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination] = carteAEchanger;
 		}
+	}  
+	
+	/**
+	 * retourne deux carte aléatoirement ou en fonction de leur emplacements en ligne ou en colone
+	 * et test si elle sont pareille.
+	 */
+	public void retournerCarte()
+	{
+		Random generateurNombresAleatoire = new Random();
+		int numeroDeLigneCarte1;
+		int numeroDeColonneCarte1;
+		int numeroDeLigneCarte2;
+		int numeroDeColonneCarte2;
+		Carte carte1;
+		Carte carte2;
+		
+		while((numeroDeLigneCarte1 != numeroDeLigneCarte2) && (numeroDeColonneCarte1 != numeroDeColonneCarte2))
+		{
+			numeroDeLigneCarte1 = generateurNombresAleatoire.nextInt(this.nombreDeLignes);
+			numeroDeColonneCarte1 = generateurNombresAleatoire.nextInt(this.nombreDeColonnes);
+			numeroDeLigneCarte2 = generateurNombresAleatoire.nextInt(this.nombreDeLignes);
+			numeroDeColonneCarte2 = generateurNombresAleatoire.nextInt(this.nombreDeColonnes);
+		}
+		 
+		this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1]=carte1;
+		this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2]=carte2;
+		
+		carte1.obtenirNumero();
+		carte2.obtenirNumero();
+		
+		if (carte1.numero ==carte2.numero)
+		{
+			this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1]=null;
+			this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2]=null;
+		}
+		
 	}
 
 	public String toString()

@@ -29,11 +29,5 @@ public class Carte
 		return this.numero;
 	}
 
-	
-		public String toString()
-		{
-			
-		}
-
 
 }
