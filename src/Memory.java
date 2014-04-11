@@ -34,7 +34,23 @@ public class Memory
 	{
 		// TODO Auto-generated method stub
 		System.out.println(this.grille);
-
-	} 
+		
+		private boolean gagner = false;
+		
+		while (gagner =! true)
+		{
+			if('click')
+			Grille	retournerCarteAleatoirement = new retournerCarteAleatoirement();
+			else
+				retournerCarte();
+			this.fin();
+		}
+		
+	}
+	
+	public void fin()
+	{
+		
+	}
 	
 }

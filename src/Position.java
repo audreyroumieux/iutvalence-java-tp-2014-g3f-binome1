@@ -7,13 +7,19 @@ import java.util.Random;
  */
 public class Position
 {
- // 2 attributs pour la ligne/colonne
+ /**
+  *  2 attributs pour la ligne/colonne
+  */
 	private final int ligne;
 	private final int colonne;
-	private int minColonne=0;
-	private int minLigne=0;
-	private int maxLigne;
-	private int maxolonne;
+
+	/**
+	 * attributs pour
+	 */
+		private int minColonne;
+		private int minLigne;
+		private int maxLignes;
+		private int maxolonne;
 	
 	// un constructeur avec parametre ligne/colonne
 	public Position(int ligne, int colonne)
@@ -21,7 +27,8 @@ public class Position
 		this.ligne=ligne;
 		this.colonne=colonne;
 	}
-	// un constructeur qui prend en parametre minLigne, maxLigne, minColonne, maxColonne -> alea
+	
+	// un constructeur qui prend en parametre minLigne, maxLigne, minColonne, maxColonne -> alea retourner carte
 	public Position(int minLigne, int minColonne,int maxLigne, int maxColonne)
 	{
 		Random generateurNombresAleatoire = new Random();
@@ -34,9 +41,9 @@ public class Position
 				numeroDeLigne=generateurNombresAleatoire.nextInt(this.ligne);
 				numeroDeColonne=generateurNombresAleatoire.nextInt(this.colonne);
 			}
-	
-
+		this.Position(numeroDeLigne, numeroDeColonne);
 	}
+	
 	// methodes pour obtnir séparement la ligne et la colonne
 	public int obtenirLigne()
 	{

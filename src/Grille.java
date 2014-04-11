@@ -18,7 +18,6 @@ public class Grille
 	 * constante du nombre de colone par défaut
 	 */
 	public static final int NOMBRE_DE_COLONNES_PAR_DEFAUT = 4;
-
 	/**
 	 * nombre de ligne de la grille
 	 */
@@ -84,7 +83,7 @@ public class Grille
 		}
 	}
 	/**
-	 * permutation N fois de deux carte pour melanger les cartes qui sont posé sur la grille
+	 * permutation N fois de deux carte, pour melanger les cartes qui sont posé sur la grille
 	 * N correspond au nombre total de permutation
 	 */
 	private void melangerCartes()
@@ -117,34 +116,37 @@ public class Grille
 	}  
 	
 	/**
-	 * retourne deux carte aléatoirement ou en fonction de leur emplacements en ligne ou en colone
+	 * retourne deux carte aléatoirement ou en fonction de leur position
 	 * et test si elle sont pareille.
 	 */
-	public void retournerCarte()
-	{
-		Random generateurNombresAleatoire = new Random();
+	public void retournerCarteAleatoirement()
+	{	
 		int numeroDeLigneCarte1;
 		int numeroDeColonneCarte1;
 		int numeroDeLigneCarte2;
 		int numeroDeColonneCarte2;
-		Carte carte1;
-		Carte carte2;
+		int numero1, numero2;
 		
-		while((numeroDeLigneCarte1 != numeroDeLigneCarte2) && (numeroDeColonneCarte1 != numeroDeColonneCarte2))
+		Position position = new Position(0,0,this.nombreDeLignes,this.nombreDeColonnes);
+		numeroDeLigneCarte1 = position.obtenirLigne();
+		numeroDeColonneCarte1 = position.obtenirColonne();
+		
+		Position position = new Position(0,0,this.nombreDeLignes,this.nombreDeColonnes);
+		numeroDeLigneCarte2 = position.obtenirColonne();
+		numeroDeColonneCarte2 = position.obtenirColonne();
+		
+		// verification des différences d'emplacement des deux cartes
+		while((numeroDeLigneCarte1 != numeroDeLigneCarte2) &&( numeroDeColonneCarte1 != numeroDeColonneCarte2))
 		{
-			numeroDeLigneCarte1 = generateurNombresAleatoire.nextInt(this.nombreDeLignes);
-			numeroDeColonneCarte1 = generateurNombresAleatoire.nextInt(this.nombreDeColonnes);
-			numeroDeLigneCarte2 = generateurNombresAleatoire.nextInt(this.nombreDeLignes);
-			numeroDeColonneCarte2 = generateurNombresAleatoire.nextInt(this.nombreDeColonnes);
+			position = new Position(0,0,this.nombreDeLignes,this.nombreDeColonnes);
+			numeroDeLigneCarte2 = position.obtenirColonne();
+			numeroDeColonneCarte2 = position.obtenirColonne();
 		}
-		 
-		this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1]=carte1;
-		this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2]=carte2;
 		
-		carte1.obtenirNumero();
-		carte2.obtenirNumero();
+		numero1 = this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1].obtenirNumero();
+		numero2 = this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2].obtenirNumero();
 		
-		if (carte1.numero ==carte2.numero)
+		if (numero1 == numero2)
 		{
 			this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1]=null;
 			this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2]=null;
