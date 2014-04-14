@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.RandomAccess;
-
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  * représente une grille composées de cartes face caché, attendent une
  * instruction d'un des joureurs pour retourner l'une des cartes (Chaque paire
@@ -8,7 +9,7 @@ import java.util.RandomAccess;
  * @author roumieau
  * 
  */
-public class Grille 
+public class Grille extends JFrame
 {
 	/**
 	 * constante du nombre de ligne par défaut
@@ -82,6 +83,7 @@ public class Grille
 			}
 		}
 	}
+	
 	/**
 	 * permutation N fois de deux carte, pour melanger les cartes qui sont posé sur la grille
 	 * N correspond au nombre total de permutation
@@ -114,34 +116,18 @@ public class Grille
 			this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination] = carteAEchanger;
 		}
 	}  
-	
 	/**
-	 * retourne deux carte aléatoirement ou en fonction de leur position
-	 * et test si elle sont pareille.
+	 * retourne une carte en fonction de sa position
+	 * @param positions
 	 */
-	public void retournerCarteAleatoirement()
-	{	
-		int numeroDeLigneCarte1;
-		int numeroDeColonneCarte1;
-		int numeroDeLigneCarte2;
-		int numeroDeColonneCarte2;
+	public void retournerCartes(Position[] positions)
+	{
 		int numero1, numero2;
 		
-		Position position = new Position(0,0,this.nombreDeLignes,this.nombreDeColonnes);
-		numeroDeLigneCarte1 = position.obtenirLigne();
-		numeroDeColonneCarte1 = position.obtenirColonne();
-		
-		Position position = new Position(0,0,this.nombreDeLignes,this.nombreDeColonnes);
-		numeroDeLigneCarte2 = position.obtenirColonne();
-		numeroDeColonneCarte2 = position.obtenirColonne();
-		
-		// verification des différences d'emplacement des deux cartes
-		while((numeroDeLigneCarte1 != numeroDeLigneCarte2) &&( numeroDeColonneCarte1 != numeroDeColonneCarte2))
-		{
-			position = new Position(0,0,this.nombreDeLignes,this.nombreDeColonnes);
-			numeroDeLigneCarte2 = position.obtenirColonne();
-			numeroDeColonneCarte2 = position.obtenirColonne();
-		}
+		int numeroDeLigneCarte1 = positions[0];
+		int numeroDeColonneCarte1 = positions[0];
+		int numeroDeLigneCarte2 = positions[1];
+		int numeroDeColonneCarte2 = positions[1];
 		
 		numero1 = this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1].obtenirNumero();
 		numero2 = this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2].obtenirNumero();
@@ -151,9 +137,11 @@ public class Grille
 			this.grilleDeCartes[numeroDeLigneCarte1][numeroDeColonneCarte1]=null;
 			this.grilleDeCartes[numeroDeLigneCarte2][numeroDeColonneCarte2]=null;
 		}
-		
 	}
-
+	
+/**
+ * affichage des cartes font on a pas trouver la paire par un "x", sinon par un "_"
+ */
 	public String toString()
 	{
 		String MemoryAsciiArt = "------------------------------------------------\n";

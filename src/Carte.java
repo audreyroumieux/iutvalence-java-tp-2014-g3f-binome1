@@ -1,10 +1,10 @@
-// TODO déplacer les classe dans un paquetage
+import javax.swing.JButton;
 /**
  * représente une carte
  * @author roumieau
  *
  */
-public class Carte
+public class Carte extends JButton
 {
 	/**
 	 *le numero de chaque carte ne doit pas pouvoir etre changé
@@ -17,6 +17,7 @@ public class Carte
 	 */
 	public Carte (int numero)
 	{
+		super("carte");
 		this.numero = numero;
 	}
 	
