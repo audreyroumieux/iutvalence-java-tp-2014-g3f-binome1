@@ -1,3 +1,4 @@
+package fr.iutvalence.java.memory;
 import java.util.Random;
 
 /**

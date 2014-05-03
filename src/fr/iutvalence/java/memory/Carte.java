@@ -1,3 +1,4 @@
+package fr.iutvalence.java.memory;
 import javax.swing.JButton;
 /**
  * représente une carte

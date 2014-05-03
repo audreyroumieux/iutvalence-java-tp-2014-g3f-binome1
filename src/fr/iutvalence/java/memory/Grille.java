@@ -1,45 +1,43 @@
+package fr.iutvalence.java.memory;
 import java.util.Random;
-import java.util.RandomAccess;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 /**
- * représente une grille composées de cartes face caché, attendent une
- * instruction d'un des joureurs pour retourner l'une des cartes (Chaque paire
- * de carte a un dessins différents)
+ * représente une grille de cartes 
  * @author roumieau
  * 
  */
-public class Grille extends JFrame
+public class Grille
 {
 	/**
-	 * constante du nombre de ligne par défaut
+	 * Nombre de lignes par défaut
 	 */
 	public static final int NOMBRE_DE_LIGNES_PAR_DEFAUT = 3;
 	/**
-	 * constante du nombre de colone par défaut
+	 * Nombre de colonnes par défaut
 	 */
 	public static final int NOMBRE_DE_COLONNES_PAR_DEFAUT = 4;
+	
 	/**
-	 * nombre de ligne de la grille
+	 * nombre de lignes
 	 */
 	private final int nombreDeLignes;
 	/**
-	 * nombre de colone de la grille
+	 * nombre de colonnes
 	 */
 	private final int nombreDeColonnes;
 
 	/**
-	 * valeur de nombre de cartes posees sur la grille lors de sa création
+	 * Nombre de cartes posees sur la grille
 	 */
 	private int nombreDeCartesPosees;
 
 	/**
-	 * tableau représentent la grille
+	 * les cartes
 	 */
 	private Carte[][] grilleDeCartes;
 
 	/**
-	 * crée un jeu de 6 paires de cartes par defaut
+	 * Création d'une grille de taille par défaut, avec des cartes placées aléatoirement
 	 */
 	public Grille()
 	{
@@ -54,8 +52,9 @@ public class Grille extends JFrame
 	}
 
 	/**
-	 * crée une grille en fonction du nombre de lignes et de colones choisi par le joueur
-	 * @return
+	 * Création d'une grille de taille donnée, avec des cartes placées aléatoirement
+	 * @param nombreDeLignes le nombre de lignes
+	 * @param nombreDeColonnes le nombre de colonnes
 	 */
 	public Grille(int nombreDeLignes, int nombreDeColonnes)
 	{
@@ -70,7 +69,7 @@ public class Grille extends JFrame
 	}
 	
 	/**
-	 * place une carte sur la grille qui lui corespond
+	 * Placer les cartes (dans l'ordre) sur la grille
 	 */
 	private void placerCartes()
 	{
@@ -85,19 +84,13 @@ public class Grille extends JFrame
 	}
 	
 	/**
-	 * permutation N fois de deux carte, pour melanger les cartes qui sont posé sur la grille
-	 * N correspond au nombre total de permutation
+	 * Mélanger (par permutation) les cartes 
 	 */
 	private void melangerCartes()
 	{
-		// TODO Auto-generated method stub
 		 Random generateurDeNombresAleatoires = new Random();
 		 
 		 int nombreDePermutationsAEffectuer = this.nombreDeLignes * this.nombreDeColonnes;
-		 int numeroDeLigneSource;
-		 int numeroDeColonneSource;
-		 int numeroDeLigneDestination;
-		 int numeroDeColonneDestination;
 
 		 Carte carteAEchanger;
 		 
@@ -106,16 +99,17 @@ public class Grille extends JFrame
 			/*
 			 * on fait un rendome (prend une valeur au hazard) entre 0 et le nob de ligne ou de colone (8) que l'on a
 			 */
-			numeroDeLigneSource = generateurDeNombresAleatoires.nextInt(this.nombreDeLignes);
-			numeroDeColonneSource = generateurDeNombresAleatoires.nextInt(this.nombreDeColonnes);
-			numeroDeLigneDestination = generateurDeNombresAleatoires.nextInt(this.nombreDeLignes);
-			numeroDeColonneDestination = generateurDeNombresAleatoires.nextInt(this.nombreDeColonnes);
+			int numeroDeLigneSource = generateurDeNombresAleatoires.nextInt(this.nombreDeLignes);
+			int numeroDeColonneSource = generateurDeNombresAleatoires.nextInt(this.nombreDeColonnes);
+			int numeroDeLigneDestination = generateurDeNombresAleatoires.nextInt(this.nombreDeLignes);
+			int numeroDeColonneDestination = generateurDeNombresAleatoires.nextInt(this.nombreDeColonnes);
 			
 			carteAEchanger = this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource];
 			this.grilleDeCartes[numeroDeLigneSource][numeroDeColonneSource] = this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination];
 			this.grilleDeCartes[numeroDeLigneDestination][numeroDeColonneDestination] = carteAEchanger;
 		}
 	}  
+	
 	/**
 	 * retourne une carte en fonction de sa position
 	 * @param positions
