@@ -1,11 +1,10 @@
 package fr.iutvalence.java.memory;
-import javax.swing.JButton;
 /**
  * représente une carte
  * @author roumieau
  *
  */
-public class Carte extends JButton
+public class Carte
 {
 	/**
 	 *le numero de chaque carte ne doit pas pouvoir etre changé
@@ -14,17 +13,16 @@ public class Carte extends JButton
 
 	/**
 	 * crée une carte que l'on peut identifier grace à un numero
-	 * @param numero
+	 * @param numero le numéro de la carte
 	 */
 	public Carte (int numero)
 	{
-		super("carte");
 		this.numero = numero;
 	}
 	
 	/**
 	 * fonction pour obtenir le numero de la carte
-	 * @returnle numero de la carte
+	 * @return le numero de la carte
 	 */
 	public int obtenirNumero()
 	{
